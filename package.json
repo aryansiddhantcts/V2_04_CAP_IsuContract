@@ -1,0 +1,51 @@
+{
+  "name": "isu-contract-mgmt-v2",
+  "version": "1.0.0",
+  "description": "SAP Service Cloud V2 — ISU Contract Management",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "build:cf": "npx cds build --production && npx cds deploy --to sqlite:gen/srv/db.sqlite --no-save",
+    "lsql" : "cds compile db/schema.cds --to sql && npx cds deploy --to sqlite:db.sqlite",
+    "rcf": "rm -rf gen mta_archives && mbt build && cf deploy mta_archives/isu-contract-mgmt-v2_1.0.0.mtar",
+    "ssc:json": "cds -2 json srv/service.cds > isu-contract.json"
+  },
+  "dependencies": {
+    "express": "^4",
+    "@sap/cds": "^8",
+    "sqlite3": "^5"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^8",
+    "@cap-js/sqlite": "^1"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "url": "db.sqlite"
+      },
+      "[production]": {
+        "auth": "mocked",
+        "db": {
+          "kind": "sqlite",
+          "url": "db.sqlite"
+        }
+      }
+    },
+    "features": {
+      "fiori_preview": true
+    },
+    "fiori": {
+      "preview": {
+        "ui5": {
+          "theme": "sap_horizon",
+          "version": ""
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+*SQL Compile
+cds compile db/schema.cds --to sql
+npx cds deploy --to sqlite:db.sqlite
+
+
+*deploy
+rm -rf gen mta_archives
+mbt build
+cf deploy mta_archives/isu-contract-mgmt-v2_1.0.0.mtar
+
+*log
+cf logs isu-contract-mgmt-v2-srv --recent
+
+*V2 Json file
+cds -2 json srv/service.cds >isucontract.json
+
+
+https://github.com/aryansiddhantcts/V2_04_CAP_IsuContract.git

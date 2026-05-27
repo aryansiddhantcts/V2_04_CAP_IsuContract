@@ -1,0 +1,566 @@
+{
+    "service": {
+        "name": "IsuContractCap",
+        "title": "Isu Contract Cap",
+        "description": "This service is for IsuContractCap.",
+        "authorizationRelevant": true
+    },
+    "entities": [
+        {
+            "name": "IsuContracts",
+            "title": "Isu Contracts",
+            "entityType": "BUSINESS",
+            "objectTypeCode": "CUS57661",
+            "root": true,
+            "creatable": true,
+            "updatable": true,
+            "attributes": [
+                {
+                    "name": "ID",
+                    "label": "ID",
+                    "dataType": "STRING",
+                    "keyType": "PRIMARY",
+                    "dataFormat": "UUID",
+                    "nullable": false,
+                    "creatable": true,
+                    "updatable": false,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "contractID",
+                    "label": "Contract ID",
+                    "description": true,
+                    "dataType": "STRING",
+                    "dataFormat": "STRING",
+                    "nullable": false,
+                    "creatable": true,
+                    "updatable": false,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "description",
+                    "label": "Description",
+                    "dataType": "STRING",
+                    "dataFormat": "STRING",
+                    "nullable": false,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "customeremail",
+                    "label": "Email",
+                    "dataType": "STRING",
+                    "dataFormat": "EMAIL",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "customerwebsite",
+                    "label": "Website",
+                    "dataType": "STRING",
+                    "dataFormat": "URI",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "status",
+                    "label": "Status",
+                    "dataType": "STRING",
+                    "dataFormat": "CODE",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "enumOptions": [
+                        {
+                            "code": "OPEN",
+                            "description": "OPEN",
+                            "default": false
+                        },
+                        {
+                            "code": "IN_PROGRESS",
+                            "description": "IN_PROGRESS",
+                            "default": false
+                        },
+                        {
+                            "code": "ON_HOLD",
+                            "description": "ON_HOLD",
+                            "default": false
+                        },
+                        {
+                            "code": "COMPLETED",
+                            "description": "COMPLETED",
+                            "default": false
+                        },
+                        {
+                            "code": "CANCELLED",
+                            "description": "CANCELLED",
+                            "default": false
+                        }
+                    ],
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "priority",
+                    "label": "Priority",
+                    "dataType": "STRING",
+                    "dataFormat": "CODE",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "enumOptions": [
+                        {
+                            "code": "LOW",
+                            "description": "LOW",
+                            "default": false
+                        },
+                        {
+                            "code": "MEDIUM",
+                            "description": "MEDIUM",
+                            "default": false
+                        },
+                        {
+                            "code": "HIGH",
+                            "description": "HIGH",
+                            "default": false
+                        },
+                        {
+                            "code": "URGENT",
+                            "description": "URGENT",
+                            "default": false
+                        }
+                    ],
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "moveinDate",
+                    "label": "Move-in Date",
+                    "dataType": "DATETIME",
+                    "dataFormat": "DATETIME",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "moveoutDate",
+                    "label": "Move-out Date",
+                    "dataType": "DATETIME",
+                    "dataFormat": "DATETIME",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "transferDate",
+                    "label": "Transfer Date",
+                    "dataType": "DATETIME",
+                    "dataFormat": "DATE",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "noofmeters",
+                    "label": "# Meters",
+                    "dataType": "INTEGER",
+                    "dataFormat": "INT32",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "prioritymovein",
+                    "label": "Priority Move-in",
+                    "dataType": "BOOLEAN",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "moveinCharge",
+                    "label": "Edit",
+                    "dataType": "OBJECT",
+                    "dataFormat": "AMOUNT",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": false,
+                    "searchable": false,
+                    "sortable": false,
+                    "objectDefinition": [
+                        {
+                            "name": "content",
+                            "dataType": "NUMBER",
+                            "dataFormat": "FLOAT",
+                            "creatable": false,
+                            "updatable": false,
+                            "nullable": true,
+                            "sortable": false,
+                            "filterable": false,
+                            "label": "Amount"
+                        },
+                        {
+                            "name": "currencyCode",
+                            "dataType": "STRING",
+                            "dataFormat": "CODE",
+                            "creatable": false,
+                            "updatable": false,
+                            "nullable": true,
+                            "sortable": false,
+                            "filterable": false,
+                            "label": "Currency"
+                        }
+                    ]
+                },
+                {
+                    "name": "usage",
+                    "label": "Edit",
+                    "dataType": "OBJECT",
+                    "dataFormat": "QUANTITY",
+                    "nullable": true,
+                    "creatable": true,
+                    "updatable": true,
+                    "filterable": false,
+                    "searchable": false,
+                    "sortable": false,
+                    "objectDefinition": [
+                        {
+                            "name": "content",
+                            "dataType": "INTEGER",
+                            "dataFormat": "INT32",
+                            "creatable": false,
+                            "updatable": false,
+                            "nullable": true,
+                            "sortable": false,
+                            "filterable": false,
+                            "label": "Quantity"
+                        },
+                        {
+                            "name": "uomCode",
+                            "dataType": "STRING",
+                            "dataFormat": "CODE",
+                            "creatable": false,
+                            "updatable": false,
+                            "nullable": true,
+                            "sortable": false,
+                            "filterable": false,
+                            "label": "Unit of Measure",
+                            "dataMinLength": 1,
+                            "dataMaxLength": 3,
+                            "keyType": "FOREIGN",
+                            "objectReference": {
+                                "associationType": "ASSOCIATION",
+                                "targetAttribute": "code",
+                                "targetEntity": "sap.ssc.md.productservice.entity.unitOfMeasure",
+                                "targetService": "sap.ssc.md.service.productService",
+                                "keyGroup": "usage"
+                            },
+                            "descriptionAttribute": "usage.uomCodeDescription"
+                        }
+                    ]
+                },
+                {
+                    "name": "formattedMoveInCharge",
+                    "label": "Move In Charge(s)",
+                    "dataType": "STRING",
+                    "dataFormat": "STRING",
+                    "nullable": true,
+                    "creatable": false,
+                    "updatable": false,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "formattedUsage",
+                    "label": "Usage(s)",
+                    "dataType": "STRING",
+                    "dataFormat": "STRING",
+                    "nullable": true,
+                    "creatable": false,
+                    "updatable": false,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "createdAt",
+                    "label": "Created At",
+                    "dataType": "DATETIME",
+                    "dataFormat": "DATETIME",
+                    "nullable": false,
+                    "creatable": false,
+                    "updatable": false,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "modifiedAt",
+                    "label": "Modified At",
+                    "dataType": "DATETIME",
+                    "dataFormat": "DATETIME",
+                    "nullable": false,
+                    "creatable": false,
+                    "updatable": false,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "createdBy",
+                    "label": "Created By",
+                    "dataType": "STRING",
+                    "dataFormat": "STRING",
+                    "nullable": false,
+                    "creatable": false,
+                    "updatable": false,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                },
+                {
+                    "name": "modifiedBy",
+                    "label": "Modified By",
+                    "dataType": "STRING",
+                    "dataFormat": "STRING",
+                    "nullable": false,
+                    "creatable": false,
+                    "updatable": false,
+                    "filterable": true,
+                    "searchable": false,
+                    "sortable": false
+                }
+            ]
+        }
+    ],
+    "events": [],
+    "apis": [
+        {
+            "name": "IsuContractsApiCAP",
+            "title": "BTP IsuContracts API",
+            "description": "API for interacting with BTP IsuContracts service",
+            "apiPath": "/IsuContractPath/IsuContracts",
+            "operations": [
+                {
+                    "id": "queryIsuContracts",
+                    "path": "/",
+                    "method": "QUERY",
+                    "request": {
+                        "pathVariables": []
+                    },
+                    "responses": [
+                        {
+                            "description": "200 OK",
+                            "responseCode": "200"
+                        },
+                        {
+                            "description": "400 BAD_REQUEST",
+                            "responseCode": "400"
+                        },
+                        {
+                            "description": "401 UNAUTHORIZED",
+                            "responseCode": "401"
+                        },
+                        {
+                            "description": "403 FORBIDDEN",
+                            "responseCode": "403"
+                        },
+                        {
+                            "description": "404 NOT_FOUND",
+                            "responseCode": "404"
+                        },
+                        {
+                            "description": "500 INTERNAL_SERVER_ERROR",
+                            "responseCode": "500"
+                        }
+                    ]
+                },
+                {
+                    "id": "readIsuContractsById",
+                    "path": "/{isuContractsId}",
+                    "method": "READ",
+                    "request": {
+                        "pathVariables": [
+                            {
+                                "name": "ID",
+                                "dataType": "STRING",
+                                "dataFormat": "UUID"
+                            }
+                        ]
+                    },
+                    "responses": [
+                        {
+                            "description": "200 OK",
+                            "responseCode": "200"
+                        },
+                        {
+                            "description": "400 BAD_REQUEST",
+                            "responseCode": "400"
+                        },
+                        {
+                            "description": "401 UNAUTHORIZED",
+                            "responseCode": "401"
+                        },
+                        {
+                            "description": "403 FORBIDDEN",
+                            "responseCode": "403"
+                        },
+                        {
+                            "description": "404 NOT_FOUND",
+                            "responseCode": "404"
+                        },
+                        {
+                            "description": "500 INTERNAL_SERVER_ERROR",
+                            "responseCode": "500"
+                        }
+                    ]
+                },
+                {
+                    "id": "createIsuContracts",
+                    "path": "/",
+                    "method": "POST",
+                    "request": {
+                        "pathVariables": []
+                    },
+                    "responses": [
+                        {
+                            "description": "201 Created",
+                            "responseCode": "201"
+                        },
+                        {
+                            "description": "400 BAD_REQUEST",
+                            "responseCode": "400"
+                        },
+                        {
+                            "description": "401 UNAUTHORIZED",
+                            "responseCode": "401"
+                        },
+                        {
+                            "description": "403 FORBIDDEN",
+                            "responseCode": "403"
+                        },
+                        {
+                            "description": "500 INTERNAL_SERVER_ERROR",
+                            "responseCode": "500"
+                        }
+                    ]
+                },
+                {
+                    "id": "updateIsuContracts",
+                    "path": "/{isuContractsId}",
+                    "method": "PATCH",
+                    "request": {
+                        "pathVariables": [
+                            {
+                                "name": "ID",
+                                "dataType": "STRING",
+                                "dataFormat": "UUID"
+                            }
+                        ]
+                    },
+                    "responses": [
+                        {
+                            "description": "200 OK",
+                            "responseCode": "200"
+                        },
+                        {
+                            "description": "400 BAD_REQUEST",
+                            "responseCode": "400"
+                        },
+                        {
+                            "description": "401 UNAUTHORIZED",
+                            "responseCode": "401"
+                        },
+                        {
+                            "description": "403 FORBIDDEN",
+                            "responseCode": "403"
+                        },
+                        {
+                            "description": "404 NOT_FOUND",
+                            "responseCode": "404"
+                        },
+                        {
+                            "description": "500 INTERNAL_SERVER_ERROR",
+                            "responseCode": "500"
+                        }
+                    ]
+                },
+                {
+                    "id": "deleteIsuContracts",
+                    "path": "/{isuContractsId}",
+                    "method": "DELETE",
+                    "request": {
+                        "pathVariables": [
+                            {
+                                "name": "ID",
+                                "dataType": "STRING",
+                                "dataFormat": "UUID"
+                            }
+                        ]
+                    },
+                    "responses": [
+                        {
+                            "description": "200 OK",
+                            "responseCode": "200"
+                        },
+                        {
+                            "description": "400 BAD_REQUEST",
+                            "responseCode": "400"
+                        },
+                        {
+                            "description": "401 UNAUTHORIZED",
+                            "responseCode": "401"
+                        },
+                        {
+                            "description": "403 FORBIDDEN",
+                            "responseCode": "403"
+                        },
+                        {
+                            "description": "404 NOT_FOUND",
+                            "responseCode": "404"
+                        },
+                        {
+                            "description": "500 INTERNAL_SERVER_ERROR",
+                            "responseCode": "500"
+                        }
+                    ]
+                }
+            ],
+            "entityReference": "IsuContracts"
+        }
+    ]
+}

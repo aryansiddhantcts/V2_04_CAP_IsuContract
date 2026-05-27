@@ -1,0 +1,38 @@
+_schema-version: '3.1'
+ID: isu-contract-mgmt-v2
+version: 1.0.0
+description: SSC V2 Entity-Based Custom Service — ISU Contract Management
+
+parameters:
+  route-prefix: cap-based-app
+modules:
+
+  - name: isu-contract-mgmt-v2-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 256M
+      disk-quota: 512M
+      routes:
+        - route: ${route-prefix}.cfapps.us21.hana.ondemand.com
+    build-parameters:
+      builder: npm
+    properties:
+      # Single-line JSON string — NEVER use > block scalar (adds \n causing ENOENT crash)
+      CDS_CONFIG: '{"requires":{"db":{"kind":"sqlite","url":"db.sqlite"},"auth":"mocked"},"features":{"fiori_preview":true},"fiori":{"preview":{"ui5":{"theme":"sap_horizon","version":""}}}}'
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: https://${route-prefix}.cfapps.us21.hana.ondemand.com
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        # npm install — not npm ci (lock file may be out of sync)
+        - npm install
+        # Compile CDS to gen/srv
+        - npx cds build --production
+        # Create SQLite file with schema + seed data in gen/srv
+        - npx cds deploy --to sqlite:gen/srv/db.sqlite --no-save
