@@ -22,52 +22,63 @@ entity IsuContract : cuid, managed {
     //   "modifiedBy": "admin@utilities.net",
 
     @Core.Immutable: true  @title: 'Contract ID'
-    contractID      : String(20) not null;
+    contractID         : String(20) not null;
 
     @description   : true  @title: 'Description'
-    description     : String(255) not null;
+    description        : String(255) not null;
 
     @title         : 'Customer Email' //@readonly
     @dataFormat    : 'EMAIL'
-    customeremail   : String(255);
+    customeremail      : String(255);
 
     @title         : 'Customer Website'
     @dataFormat    : 'URI'
-    customerwebsite : String(255);
+    customerwebsite    : String(255);
 
     @title: 'Enum Status'
-    status          : Status;
+    status             : Status;
 
     @title: 'Enum Priority'
-    priority        : Priority;
+    priority           : Priority;
 
     @title: 'Move In Date Time'
-    moveinDate      : DateTime;
+    moveinDate         : DateTime;
 
     @title: 'Move Out Date Time'
-    moveoutDate     : DateTime;
+    moveoutDate        : DateTime;
 
     @title: 'Transfer Date'
-    transferDate    : Date;
+    transferDate       : Date;
 
     @title: 'Number of Meters'
-    noofmeters      : Integer;
+    noofmeters         : Integer;
 
 
     //   "moveinCharge_ID": "ca88a387-160c-499a-addf-07921fda2f9c",
     //   "usage_ID": "38d564e0-b198-4508-b116-4c998ee99d62",
     @title: 'Priority Move In'
-    prioritymovein  : Boolean default true;
+    prioritymovein     : Boolean default true;
 
     //AMOUNT
     @title         : 'Move In Charge'
     @dataFormat    : 'AMOUNT'
-    moveinCharge    : Composition of MoveInCharge;
+    moveinCharge       : Composition of MoveInCharge;
 
     //Quantity
     @title         : 'Usage'
     @dataFormat    : 'QUANTITY'
-    usage           : Composition of Usage;
+    usage              : Composition of Usage;
+
+    //Object
+    @title: 'Contact Person'
+    contact            : Composition of Contact;
+
+    @title: 'Indidual Customer'
+    individualCustomer : Composition of IndividualCustomer;
+
+
+    @title: 'Account'
+    account            : Composition of Account;
 
 //Transient, determined at runtime. Exposed in service.cds and deterrmined in service.js
 //-->  formattedMoveInCharge
@@ -97,6 +108,24 @@ entity Usage {
     key ID      : UUID;
         content : Integer;
         uomCode : String;
+}
+
+@isCnsEntity: true
+entity Contact {
+    key ID   : UUID;
+        name : String(255);
+}
+
+@isCnsEntity: true
+entity IndividualCustomer {
+    key ID   : UUID;
+        name : String(255);
+}
+
+@isCnsEntity: true
+entity Account {
+    key ID   : UUID;
+        name : String(255);
 }
 
 // ─── Status Enum ──────────────────────────────────────────────────────────────

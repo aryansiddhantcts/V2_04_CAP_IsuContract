@@ -10,5 +10,5 @@ service IsuContractCap {
             null as formattedMoveInCharge : String  @title: 'Move In Charge'  @Core.Computed,
             null as formattedUsage        : String  @title: 'Usage'           @Core.Computed
         // @Core.Computed tells CAP: Don't include in INSERT/UPDATE,Don't try to persist in draft table,Value is always computed at read time
-        }  
+        }
 }

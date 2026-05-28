@@ -15,4 +15,13 @@ cf logs isu-contract-mgmt-v2-srv --recent
 cds -2 json srv/service.cds >isucontract.json
 
 
-https://github.com/aryansiddhantcts/V2_04_CAP_IsuContract.git
+# Step 1 — Initialize git (if not already done)
+git init
+git status
+git add .
+git commit -m "Initial commit - ISU Contract CAP app"
+git config --global credential.helper ""
+first time
+git remote add origin https://github.com/aryansiddhantcts/V2_04_CAP_IsuContract.git
+git remote set-url origin https://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@github.com/aryansiddhantcts/V2_04_CAP_IsuContract.git
+git push -u origin main
